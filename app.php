@@ -8,7 +8,7 @@ $discord = $connection->getStream();
 
 // Listen for events on Discord.
 $discord->on('ready', function (\Discord\Discord $discord) {
-    echo 'Bot is ready!', PHP_EOL;
+    echo trans('general.started'), PHP_EOL;
 
     // Listen for messages.
     $discord->on('message', function ($message, \Discord\Discord $discord) {
