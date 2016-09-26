@@ -2,10 +2,6 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
-// Load the environment variables.
-$dotenv = new Dotenv\Dotenv(__DIR__);
-$dotenv->load();
-
 // Establish connection to Discord.
 $connection = new \Lemming\Discord\Connection();
 $discord = $connection->getStream();

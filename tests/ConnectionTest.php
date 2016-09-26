@@ -6,12 +6,6 @@ use Lemming\Discord;
 
 class ConnectionTest extends TestCase
 {
-    public static function setUpBeforeClass()
-    {
-        $dotenv = new Dotenv\Dotenv(__DIR__ . '/../');
-        $dotenv->load();
-    }
-
     /**
      * Test, if the connection comes back null.
      *
