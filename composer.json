@@ -16,7 +16,8 @@
         "classmap": [
         ],
         "files": [
-            "src/Helper/env.php"
+            "src/Helper/env.php",
+            "src/Helper/translate.php"
         ],
         "psr-4": {
             "Lemming\\": "src/"
