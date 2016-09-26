@@ -15,6 +15,9 @@
     "autoload": {
         "classmap": [
         ],
+        "files": [
+            "src/Helper/env.php"
+        ],
         "psr-4": {
             "Lemming\\": "src/"
         }
