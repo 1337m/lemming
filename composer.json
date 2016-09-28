@@ -30,5 +30,9 @@
             "email": "paroxp@gmail.com"
         }
     ],
-    "minimum-stability": "stable"
+    "minimum-stability": "stable",
+    "scripts": {
+        "run": "php app.php",
+        "test": "vendor/bin/phpunit --bootstrap vendor/autoload.php tests"
+    }
 }
