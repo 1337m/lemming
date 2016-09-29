@@ -9,7 +9,7 @@ class TranslateTest extends TestCase
      */
     public function testTranslation()
     {
-        $translation = trans('general.ok');
+        $translation = trans('general.ok', 'en');
 
         $this->assertEquals('Ok', $translation);
     }
@@ -29,7 +29,7 @@ class TranslateTest extends TestCase
      */
     public function testTranslationFormatting()
     {
-        $translation = trans('general.greet_user', null, 'Tester');
+        $translation = trans('general.greet_user', 'en', 'Tester');
 
         $this->assertEquals('Hello, Tester!', $translation);
     }
@@ -40,6 +40,6 @@ class TranslateTest extends TestCase
      */
     public function testMissingTranslation()
     {
-        trans('1337.never.gonna.give.you.up');
+        trans('1337.never.gonna.give.you.up', 'en');
     }
 }
