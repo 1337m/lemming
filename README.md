@@ -151,6 +151,143 @@ Please, feel free to do so! But to make everybody's life easier, we'd like you t
   1. Have a cookie! - Every work deserves a reward. Although, we'd love to give you cookie, 
   you may need to sort this on your own. Internet is great, but it has some limitations.
 
+## Plugins
+
+Lemming has a nice and easy support for plugins, using composer!
+
+### Installing plugins
+
+Well, it's very simple! For the sake of documentation, I'll be referencing one of our official plugins
+[Lemming Giphy](https://github.com/1337m/lemming-giphy).
+
+By default, the installation is only one command! Check it out:
+
+```
+composer require 1337m/lemming-giphy
+```
+
+The plugin should be installed in it's latest version. Now it's time to reference it!
+You should be having a `config/commands.php` file. Open it up, and somewhere in the middle of an array, 
+add new key (command to be recorded) and array of options including required action.
+After all, it should look something like this:
+
+```php
+<?php
+
+return [
+    'gif' => [
+        'action' => Lemming\Giphy\Command::class,
+        'aliases' => ['giphy', 'moving-picture'],
+        'description' => 'Search the big database, of GIFs, and return the matching result.',
+        'usage' => '/gif [phrase]',
+    ],
+];
+
+```
+
+Sometimes, the plugin developers may give you instructions on how to do so. These are amazing developers.
+The plugin above, has a nice `README` file associated, explaining the steps you may need to take, 
+in order to make the plugin work. Be sure to check it out!
+
+
+### Developing plugins
+
+If you know at least basics of PHP, you know how to write plugin for Lemming...
+ - Start off with initialising composer package! Be sure to add description and some keywords.
+ - Use `PSR-4`, for easier integration. 
+ - Write tests! We all love tests. So should you. 
+ - Publish your plugin on both GitHub and Packagist. Make it available to everyone!
+ 
+We have created a little abstract class, you may need to use.
+
+Here, have a nice starting point for your app:
+
+```php
+<?php
+
+namespace MyAwesomePlugin;
+
+use Lemming\Command\Base;
+
+class MyAwesomeCommand extends Base
+{
+    public function fire()
+    {
+        return 'AWESOME!';
+    }
+}
+
+```
+
+Now if you reference this, in your bot:
+
+```php
+<?php
+
+return [
+    'awesome' => [
+        'action' => MyAwesomePlugin\MyAwesomeCommand::class,
+    ],
+];
+
+```
+
+you will be able, to write `/awesome` in the chat and expect the bot to reply!
+
+Bit of technicality:
+
+`Base` class, provides both `$message` and `$params` variables.
+
+ - `$message` is `Discord-PHP` implementation of [`Message`](https://discordphp.readme.io/docs/message) class.
+ - `$params` is an array, containing any extra parameters passed with the command.
+
+The above class, could look like this:
+
+```php
+<?php
+
+namespace MyAwesomePlugin;
+
+use Lemming\Command\Base;
+
+class RandomCommand extends Base
+{
+    public function fire()
+    {
+        if (empty($this->params)) {
+            return 'Nothing to pick from...';
+        }
+        
+        shuffle($this->params);
+        
+        return $this->message->channel->sendMessage('Personally, I would go with: ' . $this->params[0]);
+    }
+}
+
+```
+
+Reference the new command:
+
+
+
+```php
+<?php
+
+return [
+    'random' => [
+        'action' => MyAwesomePlugin\RandomCommand::class,
+    ],
+];
+
+```
+
+And test out with the discord client:
+
+```
+[user] /random Pizza Burger ChowMain Pierogi
+[bot] Personally, I would go with: Pierogi
+```
+
 ## Licence
 
 Lemming is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).

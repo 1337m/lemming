@@ -2,7 +2,7 @@
 
 namespace Lemming\Discord;
 
-use Discord\Discord;
+use Discord\DiscordCommandClient;
 
 class Connection
 {
@@ -30,8 +30,9 @@ class Connection
         }
 
         // Set the stream to be a valid connection.
-        $this->stream = new Discord([
+        $this->stream = new DiscordCommandClient([
             'token' => $token,
+            'prefix' => '/',
         ]);
     }
 
