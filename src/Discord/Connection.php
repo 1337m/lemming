@@ -2,14 +2,14 @@
 
 namespace Lemming\Discord;
 
-use Discord\Discord;
+use Discord\DiscordCommandClient;
 
 class Connection
 {
     /**
      * Hold the stream connection to Discord.
      *
-     * @var null
+     * @var DiscordCommandClient|null
      */
     private $stream = null;
 
@@ -30,16 +30,9 @@ class Connection
         }
 
         // Set the stream to be a valid connection.
-        $this->stream = new Discord([
+        $this->stream = new DiscordCommandClient([
             'token' => $token,
         ]);
-    }
-
-    public function disconnect()
-    {
-        $this->stream = null;
-
-        return $this;
     }
 
     /**

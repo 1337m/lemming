@@ -1,9 +1,5 @@
 <?php
 
-// Load the environment variables.
-$dotenv = new Dotenv\Dotenv(__DIR__ . '/../../');
-$dotenv->load();
-
 /**
  * Either load or set the default environment variable.
  *

@@ -4,6 +4,17 @@ use PHPUnit\Framework\TestCase;
 
 class TranslateTest extends TestCase
 {
+    protected $app;
+
+    public function setUp()
+    {
+        $_SERVER['DEBUG'] = true;
+
+        $this->app = new \Lemming\System\Application();
+
+        $this->app->run();
+    }
+
     /**
      * This test, should translate very simple string.
      */
