@@ -5,19 +5,16 @@ Discord bot, for custom needs.
 ## Features
 
   - It's alive!
+  - Plugin Support
+  - Custom commands
  
 ### Coming soon
 
-  - Gif provider - This has been specked out, planned and is being implemented. 
-  - Daddy Jokes filter - This has been specked out, planned and is being implemented.
+  - Custom message filters
   
 ### On our mind
 
-  - Reminders
   - Self upgrade
-  - Jokes provider
-  - Wikipedia provider
-  - In depth configuration
 
 ## Installation
 
@@ -31,28 +28,10 @@ In order to install the application and be able to use it, you will require few 
   - PHP version `5.6` or above
   - [`composer`](https://getcomposer.org/)
   - [`git`](https://git-scm.com/)
-  - Backing service (MySQL, Postgres, MongoDB, etc.)
  
 If you meet the requirements above, you're almost done!
 
-First, you may want to clone this repository.
-
-```
-git clone --depth=1 git@github.com:1337m/lemming.git
-```
-
-**Note**, we've added an extra parameter `--depth=1`, which is totally optional. It simply tells `github`:
-`Yeah, I want that! But I dont't really care for the history of this software... Just get me what I want.`
-
-Once you succeed to clone the repository, you may enter the directory. Typically, it would be:
-
-```
-cd lemming
-```
-
-Inside the directory, you may find a lot of useless stuff. 
-You probably don't need to know what's going on in here...
-However, if you do, you're awesome and be sure, to visit the Contributing section of this `README` file.
+(The detailed instructions are on the way.)
 
 You will need, to give the bot some information, so it knows how to human. Pretend at least.
 
@@ -103,9 +82,9 @@ composer run
 This list, shall grow in time...
 
 ```
-!hello - This greet the bot.
-!help - This will generate the list of commands.
-!gif [set of key words] - This will look for any GIF maches and post int on to the channel.
+/hello - This greet the bot.
+/help - This will generate the list of commands.
+/gif [set of key words] - This will look for any GIF maches and post int on to the channel.
 ```
 
 ## Testing
@@ -155,6 +134,10 @@ Please, feel free to do so! But to make everybody's life easier, we'd like you t
 
 Lemming has a nice and easy support for plugins, using composer!
 
+### Our plugins
+
+  - [Giphy](https://github.com/1337m/lemming-giphy) - A gif provider for lemming.
+
 ### Installing plugins
 
 Well, it's very simple! For the sake of documentation, I'll be referencing one of our official plugins
@@ -178,7 +161,7 @@ return [
     'gif' => [
         'action' => Lemming\Giphy\Command::class,
         'aliases' => ['giphy', 'moving-picture'],
-        'description' => 'Search the big database, of GIFs, and return the matching result.',
+        'description' => 'Search the big database of GIFs, and return the matching result.',
         'usage' => '/gif [phrase]',
     ],
 ];
@@ -267,8 +250,6 @@ class RandomCommand extends Base
 ```
 
 Reference the new command:
-
-
 
 ```php
 <?php
