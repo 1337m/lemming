@@ -2,12 +2,10 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
-// Establish connection to Discord.
-$connection = new \Lemming\Discord\Connection();
-$discord = $connection->getStream();
+$app = new \Lemming\System\Application();
 
 // Listen for events on Discord.
-$discord->on('ready', function (\Discord\Discord $discord) {
+$app->discord->on('ready', function (\Discord\Discord $discord) {
     echo trans('general.started'), PHP_EOL;
 
     // Listen for messages.
@@ -17,4 +15,4 @@ $discord->on('ready', function (\Discord\Discord $discord) {
 });
 
 // Run the bot constantly.
-$discord->run();
+$app->run();

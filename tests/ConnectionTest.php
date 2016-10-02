@@ -27,15 +27,4 @@ class ConnectionTest extends TestCase
 
         $this->assertNotNull($discord->getStream());
     }
-
-    /**
-     * Attempt disconnection from the Discord server.
-     */
-    public function testDisconnecting()
-    {
-        $discord = new Discord\Connection();
-        $discord->disconnect();
-
-        $this->assertNull($discord->getStream());
-    }
 }
