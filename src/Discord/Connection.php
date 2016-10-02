@@ -32,6 +32,7 @@ class Connection
         // Set the stream to be a valid connection.
         $this->stream = new DiscordCommandClient([
             'token' => $token,
+            'prefix' => '/',
         ]);
     }
 
