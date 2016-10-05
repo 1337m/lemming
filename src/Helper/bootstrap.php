@@ -7,8 +7,7 @@ try {
     $dotenv = new Dotenv\Dotenv(dirname($_SERVER['PHP_SELF']));
     $dotenv->load();
 } catch (\Dotenv\Exception\InvalidPathException $e) {
-    $dotenv = new Dotenv\Dotenv(__DIR__ . '/../../');
-    $dotenv->load();
+	// There is no .env file to be loaded. Skip this step.
 }
 
 /**
